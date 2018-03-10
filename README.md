@@ -59,7 +59,7 @@ Displaying 10 words per topic.
 
 - For LDA
 
-Seconds for LDA: %.3f 517.6313939094543
+Seconds for LDA: 517.631
     
     Topic 0:
     ubuntu 10 04 com install http version update upgrade bit
