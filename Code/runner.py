@@ -14,7 +14,7 @@ parser.add_argument("final_log", help="Enter the location to store the processed
 parser.add_argument("mode", help="Must be one of LDA and NMF",type=str)
 parser.add_argument("numTopics", help="Select the number of distinct topics you want to find",type=int)
 parser.add_argument("vocab_size", help="Enter size of vocabulary",type=int)
-parser.add_argument("isProcessed", help="Enter size of vocabulary",type=bool,default=False)
+parser.add_argument("isProcessed", help="Enter size of vocabulary",type=bool)
 
 args = parser.parse_args()
 
@@ -25,20 +25,24 @@ def detect_topics(args):
     :return:
     """
 
-    if not args.isProcessed:
+    if args.isProcessed:
         # Check if directory exists
         if not os.path.exists(args.final_log):
             os.makedirs(args.final_log)
         # Create Vocab file
-        su.vocab(args.data_dir,args.final_log)
+        #su.vocab(args.data_dir,args.final_log)
+        dp.preprocess(args.data_dir,args.final_log)
 
+    # Load the dataset as a list with document contents
+    documents=dp.loadDocument(args.final_log)
     mode_modules = {
         "LDA": m.runLDA,
         "NMF": m.runNMF}
+    # Launch chosen module
     if args.mode in mode_modules:
         print("Mode: ", args.mode)
         module = mode_modules[args.mode]
-        module(args.final_log)
+        module(documents,args.vocab_size,args.numTopics)
 
 
 
