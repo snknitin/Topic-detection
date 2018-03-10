@@ -23,7 +23,7 @@ Both algorithms take as input a bag of words matrix (i.e., each document represe
 The aim of each algorithm is then to produce 2 smaller matrices;
      
      A document to topic matrix and a word to topic matrix that when multiplied together reproduce the bag of words matrix with the lowest error.A tf-idf transformer is applied to the bag of words matrix that NMF must process with the TfidfVectorizer.LDA on the other hand, being a probabilistic graphical model (i.e. dealing with probabilities) only requires raw counts, so a CountVectorizer is used.
-Stop words are removed and the number of terms included in the bag of words matrix is restricted to the top 1000.
+Stop words are removed and the number of terms included in the bag of words matrix is restricted to vocab_size.
 
 ## Problems to solve
 
