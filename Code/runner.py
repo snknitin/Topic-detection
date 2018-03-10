@@ -1,6 +1,8 @@
 import argparse
 import os
 
+import time
+
 import shared_utils as su
 import classifier as clf
 import data_processing as dp
@@ -24,8 +26,11 @@ def detect_topics(args):
     :param args:
     :return:
     """
+    mode_modules = {
+        "LDA": m.runLDA,
+        "NMF": m.runNMF}
 
-    if args.isProcessed:
+    if not args.isProcessed:
         # Check if directory exists
         if not os.path.exists(args.final_log):
             os.makedirs(args.final_log)
@@ -34,15 +39,19 @@ def detect_topics(args):
         dp.preprocess(args.data_dir,args.final_log)
 
     # Load the dataset as a list with document contents
+    t0 = time.time()
     documents=dp.loadDocument(args.final_log)
-    mode_modules = {
-        "LDA": m.runLDA,
-        "NMF": m.runNMF}
+    t1 = time.time()
+    print("seconds for training step: %.3f", t1 - t0)
+
+
     # Launch chosen module
     if args.mode in mode_modules:
         print("Mode: ", args.mode)
         module = mode_modules[args.mode]
         module(documents,args.vocab_size,args.numTopics)
+    else:
+        raise ValueError("Invalid mode for this project")
 
 
 
