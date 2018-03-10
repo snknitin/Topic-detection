@@ -60,6 +60,7 @@ Displaying 10 words per topic.
 - For LDA
 
 Seconds for LDA: %.3f 517.6313939094543
+    
     Topic 0:
     ubuntu 10 04 com install http version update upgrade bit
     Topic 1:
@@ -84,6 +85,7 @@ Seconds for LDA: %.3f 517.6313939094543
 - For NMF
 
 Seconds for NMF: 54.560
+    
     Topic 0:
     know just does like linux work using try good use
     Topic 1:
