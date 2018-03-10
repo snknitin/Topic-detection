@@ -42,7 +42,7 @@ def detect_topics(args):
     t0 = time.time()
     documents=dp.loadDocument(args.final_log)
     t1 = time.time()
-    print("seconds for training step: %.3f", t1 - t0)
+    print("Seconds for loading documents: %.3f" %(t1 - t0))
 
 
     # Launch chosen module
