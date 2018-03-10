@@ -20,7 +20,7 @@ def preprocess(datapath,filepath):
             with open(os.path.join(datapath, file), 'r',encoding="utf-8") as doc:
                 content = doc.read().split('\n')
                 for line in content:
-                    target.write(line.split('\t')[-1])
+                    target.write(line.split('\t')[-1].lower())
         target.close()
 
 def loadDocument(filepath):
