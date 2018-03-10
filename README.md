@@ -6,9 +6,10 @@ future versions of Ubuntu.
 ## Dataset
 
 Ubuntu dataset is a large dataset containing unstructured multi-turn chat dialogues between users and tech supports for Ubuntu OS related issues.
+    
     Use the Ubuntu dialog data located at http://dataset.cs.mcgill.ca/ubuntu-corpus-1.0/
     Focus on the dialogs/4 folder
-    There should be ~270K .tsv files, each representing one conversation by different participants. This is the subset we would like to use for this project.
+There should be ~270K .tsv files, each representing one conversation by different participants. This is the subset we would like to use for this project.
 
 
 ## Methods used
@@ -20,16 +21,14 @@ Ubuntu dataset is a large dataset containing unstructured multi-turn chat dialog
 
 Both algorithms take as input a bag of words matrix (i.e., each document represented as a row, with each columns containing the count of words in the corpus)
 The aim of each algorithm is then to produce 2 smaller matrices;
-a document to topic matrix and a word to topic matrix that when multiplied together reproduce the bag of words matrix with the lowest error.
-A tf-idf transformer is applied to the bag of words matrix that NMF must process with the TfidfVectorizer.
-
-    LDA on the other hand, being a probabilistic graphical model (i.e. dealing with probabilities) only requires raw counts, so a CountVectorizer is used.
+     
+     A document to topic matrix and a word to topic matrix that when multiplied together reproduce the bag of words matrix with the lowest error.A tf-idf transformer is applied to the bag of words matrix that NMF must process with the TfidfVectorizer.LDA on the other hand, being a probabilistic graphical model (i.e. dealing with probabilities) only requires raw counts, so a CountVectorizer is used.
 Stop words are removed and the number of terms included in the bag of words matrix is restricted to the top 1000.
 
 ## Problems to solve
 
-- Identify top ​ ​10 most ​ ​popular ​ ​topics
-- Classifier ​ (or ​ ​topic ​ ​detector)
+- Identify top 10 most popular topics
+- Classifier (or topic detector)
 
 
 ## Preprocessing
@@ -39,13 +38,15 @@ Stop words are removed and the number of terms included in the bag of words matr
     2004-09-25T11:31:00.000Z	jblack		Got it.
     2004-09-25T11:31:00.000Z	lifeless	jblack	its in the email that jdub sent.. and on the nonameyet wiki
 
-This is the raw data which is converted into
+This is the raw data which is converted into a file with the same name in a finished files path
 
     geesh. nobody tells me anything.Ok. Thanks.Got it.its in the email that jdub sent.. and on the nonameyet wiki
 
+by extacting only the last part of each sentence whic involves the conversation. Since we are identifying topics, user handles and time stamps are irrelevant data.
+
 ## Running the code
 
-    python runner.py  \<\insert data path\>\ \<\insert processed data path\>\ mode numofTopics vocab_size True/False
+    python runner.py  \<\insert data path\>\ \<\insert finished files path\>\ mode numofTopics vocab_size True/False
 
 - Mode is one of LDA or NMF
 - numOfTOpics is set to 10
