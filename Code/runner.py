@@ -1,3 +1,6 @@
+"""
+Main function that integrates different parts of this project
+"""
 import argparse
 import os
 
@@ -16,7 +19,7 @@ parser.add_argument("final_log", help="Enter the location to store the processed
 parser.add_argument("mode", help="Must be one of LDA and NMF",type=str)
 parser.add_argument("numTopics", help="Select the number of distinct topics you want to find",type=int)
 parser.add_argument("vocab_size", help="Enter size of vocabulary",type=int)
-parser.add_argument("isProcessed", help="Enter size of vocabulary",type=bool)
+parser.add_argument("isProcessed", help="Enter size of vocabulary",type=str)
 
 args = parser.parse_args()
 
@@ -30,12 +33,11 @@ def detect_topics(args):
         "LDA": m.runLDA,
         "NMF": m.runNMF}
 
-    if not args.isProcessed:
+    # If True then it skips cleaning the files again, else it runs with the previously cleaned files
+    if args.isProcessed!="True":
         # Check if directory exists
         if not os.path.exists(args.final_log):
             os.makedirs(args.final_log)
-        # Create Vocab file
-        #su.vocab(args.data_dir,args.final_log)
         dp.preprocess(args.data_dir,args.final_log)
 
     # Load the dataset as a list with document contents
