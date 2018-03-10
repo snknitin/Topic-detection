@@ -46,7 +46,7 @@ by extacting only the last part of each sentence whic involves the conversation.
 
 ## Running the code
 
-    python runner.py  \<\insert data path\>\ \<\insert finished files path\>\ mode numofTopics vocab_size True/False
+    python runner.py  <insert data path> <insert finished files path> mode numofTopics vocab_size True/False
 
 - Mode is one of LDA or NMF
 - numOfTOpics is set to 10
