@@ -1,14 +1,10 @@
-"""Data processing """
-
+"""Data processing methods"""
 
 import os
 
-
-
-
 def preprocess(datapath,filepath):
     """
-
+     Remove unwanted information and clean the files for use
     :param datapath: Reads files from data location
     :param filepath: Writes processed output files into a different location
     :return:
@@ -25,6 +21,7 @@ def preprocess(datapath,filepath):
 
 def loadDocument(filepath):
     """
+    Load the cleaned data into a list for vectorizers
     :param filepath: Read all files in this location
     :return: Return a list of all the documents' contents
     """
