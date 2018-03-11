@@ -27,7 +27,7 @@ class TopicClassifier(object):
         tfidf_test = tfidf_vectorizer.fit_transform(self.X_test)
         tfidf_feature_names_test = tfidf_vectorizer.get_feature_names()
         self.model = NMF(n_components=self.numTopics, random_state=1, alpha=.1, l1_ratio=.5, init='nndsvd').fit(tfidf)
-        self.feature_names = tfidf_feature_names_test
+        self.feature_names = tfidf_feature_names
         self.W = self.model.transform(tfidf_test)
 
 
