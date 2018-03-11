@@ -53,6 +53,8 @@ by extacting only the last part of each sentence whic involves the conversation.
 - vocab_size = 50000
 - isProcessed is a boolean value which indicates that data has been preprocessed and can be used directly
 
+    For classifier run python classfier.py and change the parameters in the code if necessary
+
 ## Results
 
 Displaying 10 words per topic.
